@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Party Agenda</title>
+    <!-- Tailwind CSS for utility-first styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts for consistent typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Sora:wght@400&display=swap" rel="stylesheet">
+    <style>
+        /* General body styling to match the invitation page */
+        body {
+            font-family: 'Sora', sans-serif;
+            background: #0d0d0d;
+            color: #e2e8f0;
+            background-image: radial-gradient(circle at center, #2d3748, #0d0d0d);
+            /* This line was removed to fix the scrolling issue. */
+            position: relative; /* Needed for positioning the absolute pseudo-elements */
+        }
+
+        /* --- New Party Lighting Animation CSS --- */
+        body::before, body::after {
+            content: '';
+            position: absolute;
+            z-index: -1; /* Place behind the main content */
+            width: 50vw;
+            height: 50vw;
+            border-radius: 50%;
+            opacity: 0.6;
+            filter: blur(100px); /* Blur to create a soft, glowing effect */
+            animation: moveLight 20s infinite alternate ease-in-out;
+            pointer-events: none; /* Make sure it doesn't block clicks */
+        }
+        body::before {
+            background: radial-gradient(circle, rgba(0, 248, 141, 0.7), transparent 70%);
+            top: -20vh;
+            left: -20vw;
+            animation-delay: 0s;
+        }
+        body::after {
+            background: radial-gradient(circle, rgba(255, 0, 150, 0.7), transparent 70%);
+            bottom: -20vh;
+            right: -20vw;
+            animation-delay: -10s;
+        }
+        @keyframes moveLight {
+            0% {
+                transform: translate(0, 0);
+            }
+            100% {
+                transform: translate(50vw, 50vh);
+            }
+        }
+        /* --- End of New Animation CSS --- */
+
+        /* Main container styling */
+        .container {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 2.5rem;
+            background-color: #1a202c;
+            border-radius: 2rem;
+            box-shadow: 0 0 40px rgba(0, 248, 141, 0.2);
+            backdrop-filter: blur(10px);
+            animation: fadeIn 1s ease-in-out;
+            border: 2px solid #00F88D;
+            transition: all 0.3s ease-in-out;
+            position: relative; /* Ensures it stays on top of the lighting */
+            z-index: 1; /* Make sure the container is above the animated lights */
+        }
+        /* Fade-in animation for the entire page on load */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        /* Styling for headers using Orbitron font and glowing text-shadow */
+        h1, h2 {
+            font-family: 'Orbitron', sans-serif;
+            color: #00F88D;
+            text-shadow: 0 0 10px rgba(0, 248, 141, 0.7);
+        }
+        h1 {
+            font-size: 2.8rem;
+            text-align: center;
+            margin-bottom: 1rem;
+            letter-spacing: 2px;
+        }
+        h2 {
+            font-size: 2.2rem;
+            margin-top: 2rem;
+            padding-bottom: 0.5rem;
+            border-image: linear-gradient(to right, #00F88D, transparent) 1;
+            border-bottom: 2px solid;
+        }
+        /* Styling for the list of agenda items */
+        .agenda-item {
+            display: flex;
+            flex-direction: column;
+            padding: 1.5rem;
+            background-color: rgba(45, 55, 72, 0.6);
+            border-radius: 1.5rem;
+            border: 1px solid rgba(0, 248, 141, 0.3);
+            box-shadow: inset 0 0 15px rgba(0, 248, 141, 0.1);
+            transition: all 0.3s ease-in-out;
+        }
+        /* Hover effect for agenda items */
+        .agenda-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 248, 141, 0.3);
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white min-h-screen p-4 flex flex-col items-center justify-center">
+
+    <div class="container">
+        <!-- Main Header -->
+        <header class="text-center">
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">Party Agenda 🎧</h1>
+            <p class="text-lg md:text-xl text-gray-400">Here's a breakdown of the festivities. Don't miss a beat!</p>
+        </header>
+        
+        <!-- Agenda List -->
+        <section class="mt-8 space-y-6">
+            <div class="agenda-item">
+                <p class="font-bold text-2xl text-[#00F88D]">1:00 PM - 2:00 PM</p>
+                <p class="text-lg text-gray-200 mt-2">Doors open! Get here early, grab a drink, and get ready to chill.</p>
+            </div>
+            <div class="agenda-item">
+                <p class="font-bold text-2xl text-[#00F88D]">2:00 PM - 4:00 PM</p>
+                <p class="text-lg text-gray-200 mt-2">Beer & Chill. The perfect time to relax and mingle before the music starts.</p>
+            </div>
+            <div class="agenda-item">
+                <p class="font-bold text-2xl text-[#00F88D]">4:00 PM - 5:00 PM</p>
+                <p class="text-lg text-gray-200 mt-2">BBQ & Beats. The grill gets fired up, and Corporate Stoner kicks off the music with an Afro House set.</p>
+            </div>
+            <div class="agenda-item">
+                <p class="font-bold text-2xl text-[#00F88D]">5:00 PM - 6:00 PM</p>
+                <p class="text-lg text-gray-200 mt-2">Lin takes over with a set of Afro House and Tribal House.</p>
+            </div>
+            <div class="agenda-item">
+                <p class="font-bold text-2xl text-[#00F88D]">6:00 PM - 8:00 PM</p>
+                <p class="text-lg text-gray-200 mt-2">Games & Cocktails. The music takes a break while we mix some drinks and start the drinking games.</p>
+            </div>
+            <div class="agenda-item">
+                <p class="font-bold text-2xl text-[#00F88D]">8:00 PM - 9:00 PM</p>
+                <p class="text-lg text-gray-200 mt-2">Lin is back on the decks!</p>
+            </div>
+            <div class="agenda-item">
+                <p class="font-bold text-2xl text-[#00F88D]">9:00 PM - 10:00 PM</p>
+                <p class="text-lg text-gray-200 mt-2">Corporate Stoner brings the heat with another DJ set.</p>
+            </div>
+            <div class="agenda-item">
+                <p class="font-bold text-2xl text-[#00F88D]">10:00 PM - 11:00 PM</p>
+                <p class="text-lg text-gray-200 mt-2">Break.</p>
+            </div>
+            <div class="agenda-item">
+                <p class="font-bold text-2xl text-[#00F88D]">11:00 PM - 1:00 AM</p>
+                <p class="text-lg text-gray-200 mt-2">LnHD and Victoria go back-to-back for a late-night session.</p>
+            </div>
+            <div class="agenda-item">
+                <p class="font-bold text-2xl text-[#00F88D]">1:00 AM onwards</p>
+                <p class="text-lg text-gray-200 mt-2">Afterparty! Do whatever you want, whenever you want. Let's keep the good times rolling!</p>
+            </div>
+        </section>
+        
+    </div>
+</body>
+</html>
